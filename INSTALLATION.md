@@ -1,132 +1,30 @@
 # Installation
 
-Installing Kayatune Global Transpose only takes a few minutes.
-
----
-
-# Requirements
+## Requirements
 
 - Ableton Live 12.x
 - Max for Live
 - Kayatune
+- A MIDI interface that forwards SysEx
 
----
+## Install
 
-# 1. Download
+1. Download and extract the release ZIP.
+2. Keep these files together:
 
-Download the latest release from GitHub.
+   - `Kayatune Global Transpose Standalone.amxd`
+   - `kayatune_sysex_parser.js`
 
-Extract the ZIP archive.
+3. Copy the `Max MIDI Effect` folder to a permanent location in your Ableton User Library.
+4. Drag the `.amxd` onto a MIDI track.
+5. Select the MIDI input receiving Kayatune SysEx.
+6. Set **Monitor** to **In**.
 
----
+## Test
 
-# 2. Install the Max for Live Device
+- Kayatune 0 → device shows A / 0
+- Kayatune +1 → device shows A# / +1
+- Kayatune +2 → device shows B / +2
+- Kayatune -1 → device shows G# / -1
 
-Copy
-
-```
-Kayatune Global Transpose.amxd
-```
-
-to your Ableton User Library
-
-or simply drag it onto any MIDI Track.
-
----
-
-# 3. Connect Kayatune
-
-Connect your keyboard as you normally would.
-
-Start Kayatune.
-
-No additional configuration is required.
-
----
-
-# 4. Load the Device
-
-Create a MIDI Track.
-
-Load
-
-```
-Kayatune Global Transpose.amxd
-```
-
-onto the track.
-
-The device will immediately start listening for Kayatune SysEx messages.
-
----
-
-# 5. Verify Installation
-
-Change the transpose value inside Kayatune.
-
-The device should automatically display:
-
-- Current musical key
-- Current transpose value
-
-If UDP output is enabled, the transpose value will also be transmitted automatically.
-
----
-
-# Optional
-
-Launchpad Duo Sync Pro can receive transpose updates automatically through the built-in UDP interface.
-
-No additional configuration is required.
-
----
-
-# Updating
-
-Replace the existing
-
-```
-Kayatune Global Transpose.amxd
-```
-
-with the latest version.
-
----
-
-# Troubleshooting
-
-## No transpose detected
-
-- Verify that Kayatune is running.
-- Verify that your MIDI connection is working.
-- Reload the Max for Live device.
-
----
-
-## No SysEx messages
-
-Ensure your MIDI interface forwards SysEx messages correctly.
-
----
-
-## UDP integration not working
-
-Verify that the receiving application is listening on the configured UDP port.
-
----
-
-## Device not loading
-
-Make sure Max for Live is installed and activated.
-
----
-
-# Support
-
-If you encounter any issues, please create a GitHub Issue and include:
-
-- Ableton Live version
-- Max version
-- Operating system
-- MIDI interface
-- Screenshots (if applicable)
+All Session View audio clips should follow the same transpose amount. Tracks containing `[NP]` remain unchanged.

@@ -1,11 +1,22 @@
 # Changelog
 
-## 1.0.0
+## [2.0.0] - 2026-08-06
 
-Erstes eigenständiges Release von Kayatune Global Transpose.
+### Added
 
-- Kayatune-SysEx-Empfang über Max for Live
-- Absoluter Transpose-Wert
-- Notenanzeige auf Basis A
-- UDP-Ausgabe im Format `LDS1:<WERT>`
-- Optionaler Python-Companion als Fallback
+- Standalone clip-transposition engine using the Ableton Live API
+- Operation without Launchpad Duo Sync Pro
+- Saved transpose state inside the Live Set
+- `[NP]` track exclusion
+- Direct Session View audio-clip processing
+- Musical key display based on root note A
+
+### Changed
+
+- UDP output is no longer required for standalone operation
+- Launchpad Duo Sync Pro is now an optional integration
+
+### Limitations
+
+- Arrangement View clips are not transposed
+- Root note is fixed to A in this release

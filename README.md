@@ -1,107 +1,49 @@
-# 🎹 Kayatune Global Transpose for Ableton Live
+# Kayatune Global Transpose Standalone v2.0.0
 
-Automatically synchronize Kayatune's transpose with Ableton Live.
+A Max for Live MIDI device that reads Kayatune transpose SysEx and transposes all Session View audio clips directly in Ableton Live.
 
-Kayatune Global Transpose is a Max for Live device that receives transpose information directly from Kayatune via SysEx and instantly updates Ableton Live in real time.
+## No Launchpad required
 
-Designed for live performers who use external keyboards together with Ableton Live and want all loops, backing tracks and instruments to stay in the same key without manually changing multiple devices.
-
----
+This version works without Launchpad Duo Sync Pro. Launchpad Duo Sync remains an optional companion for LED feedback and controller operation.
 
 ## Features
 
-- 🎹 Automatic Kayatune transpose detection
-- ⚡ Real-time SysEx processing
-- 🎼 Musical key detection
-- 🎵 Global transpose for Ableton Live
-- 📡 Built-in UDP output for external integrations
-- 🎛️ Max for Live interface
-- 🟢 Live performance optimized
-- ⚙️ Plug & Play
-
----
-
-## How it works
-
-```
-Kayatune
-      │
-      ▼
-SysEx
-      │
-      ▼
-Kayatune Global Transpose
-(Max for Live)
-      │
-      ▼
-UDP Output (optional)
-      │
-      ▼
-Ableton Live
-or external applications
-```
-
----
-
-## Current Features
-
-- Reads transpose changes directly from Kayatune
-- Detects the current musical key
-- Displays transpose value
-- Sends UDP messages to external software
-- Very low latency
-- Optimized for live performance
-
----
-
-## Companion Projects
-
-Kayatune Global Transpose works standalone.
-
-It also integrates perfectly with:
-
-- 🎛️ Launchpad Duo Sync Pro
-
-More integrations can easily be added using the built-in UDP protocol.
-
----
-
-## Requirements
-
-- Ableton Live 12.x
-- Max for Live
-- Kayatune
-
----
+- Reads the confirmed Kayatune SysEx transpose value
+- Applies the absolute value to all Session View audio clips
+- Preserves individual clip offsets by applying only the required delta
+- Stores the current transpose state with the Live Set
+- Shows the musical key based on root note A
+- Excludes tracks containing `[NP]`
+- Limits global transpose to -12 … +12 semitones
 
 ## Installation
 
-See:
+1. Keep the `.amxd` and `.js` files together in the same folder.
+2. Copy the complete `Max MIDI Effect` folder into your Ableton User Library, or drag the `.amxd` directly onto a MIDI track.
+3. Route the MIDI interface carrying Kayatune SysEx to that track.
+4. Set the track Monitor to **In**.
+5. Change transpose on Kayatune.
 
-📄 INSTALLATION.md
+## Track exclusion
 
----
+Add `[NP]` anywhere in a track name:
 
-## Roadmap
+- `[NP] Drums`
+- `Percussion [NP]`
+- `FX [NP]`
 
-- Configurable root key
-- Sharp / Flat notation
-- Custom themes
-- OSC output
-- MIDI output mode
-- Automatic controller detection
-- Additional integrations
+MIDI clips are ignored automatically.
 
----
+## Important
 
-## Contributing
+The device controls Session View audio clips. Arrangement clips are not changed in v2.0.0.
 
-Bug reports, feature requests and pull requests are always welcome.
+## Optional Launchpad integration
 
-If you find a bug or have an idea for an improvement, please open an Issue.
+Use Launchpad Duo Sync Pro separately when you also want:
 
----
+- transpose overlays on two Launchpads
+- left/right arrow control
+- dual Session Ring synchronization
 
-## License
-
-MIT License
+Do not use the standalone device and the UDP-based Launchpad edition to transpose the same clips simultaneously unless one side's transposition engine is disabled.
