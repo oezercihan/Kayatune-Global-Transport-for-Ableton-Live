@@ -1,4 +1,4 @@
-# Kayatune Global Transpose Standalone v2.0.0
+# Kayatune Global Transpose Standalone v1.0.0
 
 A Max for Live MIDI device that reads Kayatune transpose SysEx and transposes all Session View audio clips directly in Ableton Live.
 
