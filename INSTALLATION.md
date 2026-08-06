@@ -1,101 +1,132 @@
-# Installation – Kayatune Global Transpose
+# Installation
 
-## Voraussetzungen
+Installing Kayatune Global Transpose only takes a few minutes.
 
-- Ableton Live mit Max for Live
+---
+
+# Requirements
+
+- Ableton Live 12.x
+- Max for Live
 - Kayatune
-- MIDI-Verbindung vom Kayatune-Signalweg zum Mac/PC
-- Installiertes **Launchpad Duo Sync Pro**
 
-## 1. Max-for-Live-Device installieren
+---
 
-Kopiere den gesamten Ordner:
+# 1. Download
 
-```text
-Max MIDI Effect
+Download the latest release from GitHub.
+
+Extract the ZIP archive.
+
+---
+
+# 2. Install the Max for Live Device
+
+Copy
+
 ```
-
-an einen dauerhaften Ort oder in deine Ableton User Library, zum Beispiel:
-
-### macOS
-
-```text
-~/Music/Ableton/User Library/Presets/MIDI Effects/Max MIDI Effect/Kayatune Global Transpose/
-```
-
-### Windows
-
-```text
-Dokumente/Ableton/User Library/Presets/MIDI Effects/Max MIDI Effect/Kayatune Global Transpose/
-```
-
-Wichtig: Diese beiden Dateien zusammenlassen:
-
-```text
 Kayatune Global Transpose.amxd
-kayatune_sysex_parser.js
 ```
 
-## 2. Device laden
+to your Ableton User Library
 
-1. Erstelle in Ableton eine MIDI-Spur.
-2. Ziehe `Kayatune Global Transpose.amxd` auf diese Spur.
-3. Wähle als `MIDI From` den USB-MIDI-Adapter oder MIDI-Port, über den die Kayatune-SysEx-Daten ankommen.
-4. Stelle `Monitor` auf `In`.
+or simply drag it onto any MIDI Track.
 
-## 3. MIDI-Port in Ableton aktivieren
+---
 
-Unter:
+# 3. Connect Kayatune
 
-```text
-Einstellungen → Link, Tempo & MIDI
+Connect your keyboard as you normally would.
+
+Start Kayatune.
+
+No additional configuration is required.
+
+---
+
+# 4. Load the Device
+
+Create a MIDI Track.
+
+Load
+
+```
+Kayatune Global Transpose.amxd
 ```
 
-muss beim verwendeten MIDI-Eingang `Track` aktiviert sein.
+onto the track.
 
-## 4. Funktion prüfen
+The device will immediately start listening for Kayatune SysEx messages.
 
-Ändere am Kayatune den Transpose-Wert.
+---
 
-Erwartetes Verhalten:
+# 5. Verify Installation
 
-- Die Anzeige im M4L-Device ändert sich.
-- Ableton-Clips werden durch Launchpad Duo Sync Pro transponiert.
-- Beide Launchpads zeigen den aktuellen Wert an.
+Change the transpose value inside Kayatune.
 
-## 5. Device-Abhängigkeiten einbetten
+The device should automatically display:
 
-Öffne das Device im Max-Editor und nutze, sofern verfügbar:
+- Current musical key
+- Current transpose value
 
-```text
-Freeze Device / Collect All and Save
+If UDP output is enabled, the transpose value will also be transmitted automatically.
+
+---
+
+# Optional
+
+Launchpad Duo Sync Pro can receive transpose updates automatically through the built-in UDP interface.
+
+No additional configuration is required.
+
+---
+
+# Updating
+
+Replace the existing
+
+```
+Kayatune Global Transpose.amxd
 ```
 
-Danach erneut speichern. Dadurch kann der JavaScript-Parser in das Device eingebettet werden.
+with the latest version.
 
-## Optionaler Companion-Fallback
+---
 
-Nur verwenden, wenn der direkte Max-for-Live-SysEx-Weg nicht genutzt werden soll.
+# Troubleshooting
 
-1. Ordner `Optional Companion` öffnen.
-2. `Install.command` einmal starten.
-3. Danach `Start.command` oder `Start Console.command` starten.
-4. Das Max-for-Live-Device in diesem Fall nicht gleichzeitig senden lassen.
+## No transpose detected
 
-## Fehlerbehebung
+- Verify that Kayatune is running.
+- Verify that your MIDI connection is working.
+- Reload the Max for Live device.
 
-### Device zeigt keinen Wert
+---
 
-- MIDI-Spur: `Monitor = In`
-- korrekter MIDI-Eingang ausgewählt
-- `Track` für den Eingang aktiviert
-- `sysexin all` im Patch vorhanden
-- Max Console auf fehlende `kayatune_sysex_parser.js` prüfen
+## No SysEx messages
 
-### Max meldet fehlende JavaScript-Datei
+Ensure your MIDI interface forwards SysEx messages correctly.
 
-Lege `kayatune_sysex_parser.js` direkt neben die `.amxd`, lade das Device neu und speichere es anschließend mit eingebetteten Abhängigkeiten.
+---
 
-### Launchpads reagieren nicht
+## UDP integration not working
 
-Prüfe, ob Launchpad Duo Sync Pro geladen ist und im Log auf `127.0.0.1:45831` lauscht.
+Verify that the receiving application is listening on the configured UDP port.
+
+---
+
+## Device not loading
+
+Make sure Max for Live is installed and activated.
+
+---
+
+# Support
+
+If you encounter any issues, please create a GitHub Issue and include:
+
+- Ableton Live version
+- Max version
+- Operating system
+- MIDI interface
+- Screenshots (if applicable)
