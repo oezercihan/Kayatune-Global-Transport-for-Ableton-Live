@@ -36,7 +36,7 @@ MIDI clips are ignored automatically.
 
 ## Important
 
-The device controls Session View audio clips. Arrangement clips are not changed in v2.0.0.
+The device controls Session View audio clips. Arrangement clips are not changed in Standalone v1.0.0.
 
 ## Optional Launchpad integration
 
